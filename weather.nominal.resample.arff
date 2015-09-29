@@ -1,0 +1,23 @@
+@relation weather.symbolic-weka.filters.supervised.instance.Resample-B0.0-S1-Z100.0
+
+@attribute outlook {sunny,overcast,rainy}
+@attribute temperature {hot,mild,cool}
+@attribute humidity {high,normal}
+@attribute windy {TRUE,FALSE}
+@attribute play {yes,no}
+
+@data
+sunny,mild,normal,TRUE,yes
+rainy,mild,high,FALSE,yes
+rainy,mild,high,FALSE,yes
+sunny,mild,normal,TRUE,yes
+overcast,hot,normal,FALSE,yes
+sunny,cool,normal,FALSE,yes
+rainy,mild,normal,FALSE,yes
+rainy,mild,high,FALSE,yes
+rainy,mild,high,FALSE,yes
+sunny,mild,high,FALSE,no
+rainy,mild,high,TRUE,no
+sunny,mild,high,FALSE,no
+rainy,cool,normal,TRUE,no
+sunny,mild,high,FALSE,no
