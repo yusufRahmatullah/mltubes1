@@ -80,6 +80,7 @@ public class WekaView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         testOpenFile = new javax.swing.JButton();
         classifyUnlabeledRadio = new javax.swing.JRadioButton();
+        isResultShow = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultText = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
@@ -210,6 +211,9 @@ public class WekaView extends javax.swing.JFrame {
             }
         });
 
+        isResultShow.setText("Show Result");
+        isResultShow.setEnabled(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -223,16 +227,20 @@ public class WekaView extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(trainRadio)
-                    .addComponent(crossRadio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(testRadio)
-                    .addComponent(classifyUnlabeledRadio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(testOpenFile, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(testRadio)
+                        .addGap(34, 34, 34)
+                        .addComponent(testOpenFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(trainRadio)
+                            .addComponent(crossRadio)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(classifyUnlabeledRadio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(isResultShow)))
+                        .addGap(0, 15, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,15 +248,14 @@ public class WekaView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(trainRadio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(testRadio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(classifyUnlabeledRadio)
-                        .addGap(4, 4, 4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(testOpenFile)
-                        .addGap(15, 15, 15)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(testRadio)
+                    .addComponent(testOpenFile))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classifyUnlabeledRadio)
+                    .addComponent(isResultShow))
+                .addGap(4, 4, 4)
                 .addComponent(crossRadio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -521,6 +528,7 @@ public class WekaView extends javax.swing.JFrame {
                 break;
             }
         }
+        WekaMiddle.setClassifyResultView(isResultShow.isSelected());
         WekaMiddle.setPercent(Double.valueOf(percentageValue.getText()));
         WekaMiddle.setClassifier(classifierText);
         WekaMiddle.setEvaluation(optionsText);
@@ -584,8 +592,10 @@ public class WekaView extends javax.swing.JFrame {
     private void classifyUnlabeledRadioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_classifyUnlabeledRadioStateChanged
         if (classifyUnlabeledRadio.isSelected()) {
             testOpenFile.setEnabled(true);
+            isResultShow.setEnabled(true);
         } else {
             testOpenFile.setEnabled(false);
+            isResultShow.setEnabled(false);
         }
     }//GEN-LAST:event_classifyUnlabeledRadioStateChanged
 
@@ -635,6 +645,7 @@ public class WekaView extends javax.swing.JFrame {
     private javax.swing.JLabel fileLabel;
     private javax.swing.JRadioButton id3Radio;
     private javax.swing.JTextArea instancesView;
+    private javax.swing.JCheckBox isResultShow;
     private javax.swing.JRadioButton j48Radio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

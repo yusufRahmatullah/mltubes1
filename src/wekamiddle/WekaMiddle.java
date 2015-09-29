@@ -77,7 +77,7 @@ public class WekaMiddle {
     
     public static void resampleAtribute() {
         // for supervised learning
-        if(data.classIndex() != -1) {
+        if(!data.instance(0).classIsMissing()) {
             weka.filters.supervised.instance.Resample resample = 
                 new weka.filters.supervised.instance.Resample();
             try {
@@ -109,6 +109,9 @@ public class WekaMiddle {
             classifier = new Id3();
         } else if (classifierText.equalsIgnoreCase("myID3")) {
             classifier = new myID3();
+        } else if (classifierText.equalsIgnoreCase("myC45")) {
+            // ubah ini mi!!!!
+            classifier = new J48();
         }
     }
     

@@ -39,6 +39,14 @@ public class myID3 extends Classifier {
         data = new Instances(instances);
         data.deleteWithMissingClass();
         
+        // if data is numeric, discretize data using filter: discertize
+        if (data.classAttribute().isNumeric() || data.attribute(0).isNumeric()) {
+            weka.filters.supervised.attribute.Discretize discretizeFilter = 
+                    new weka.filters.supervised.attribute.Discretize();
+            discretizeFilter.setInputFormat(data);
+            data = weka.filters.supervised.attribute.Discretize.useFilter(data, discretizeFilter);
+        }
+        
         makeTree(data);
     }
     
@@ -63,8 +71,12 @@ public class myID3 extends Classifier {
         
         // enable nominal attributes
         capabilities.enable(Capability.NOMINAL_ATTRIBUTES);
+        // enable numeric attributes
+        capabilities.enable(Capability.NUMERIC_ATTRIBUTES);
         // enable nominal class
         capabilities.enable(Capability.NOMINAL_CLASS);
+        // enable numeric class
+        capabilities.enable(Capability.NUMERIC_CLASS);
         // enable missing class value
         capabilities.enable(Capability.MISSING_CLASS_VALUES);
         // set minimum instances number
@@ -77,7 +89,7 @@ public class myID3 extends Classifier {
         
         // check if attributes empty, return single-node tree root, 
         // with label = most common value of TargetAttributes in Example
-        //. base of the recursive
+        // base of the recursive
         if (data.numInstances() == 0) {
             attributeValue = null;
             classValue = Instance.missingValue();
@@ -95,6 +107,10 @@ public class myID3 extends Classifier {
             if (ig[i] > ig[maxIdx]) {
                 maxIdx = i;
             }
+        }
+        // debug
+        for (int i=0; i<ig.length; i++) {
+            System.out.println(data.attribute(i).name()+": ig["+i+"]: "+ig[i]);
         }
         // set highest information attribute to attribute value
         attributeValue = data.attribute(maxIdx);
@@ -140,6 +156,8 @@ public class myID3 extends Classifier {
             }
         }
         ig = entropy(data) - sigma;
+        //debug
+        System.out.println("entropy: "+entropy(data)+" & sigma: "+sigma);
         return ig;
     }
    
@@ -154,7 +172,7 @@ public class myID3 extends Classifier {
         // calculate entropy from all class
         for (double classProb : classProbs) {
             if (classProb >0 ) {    // avoid log(0)
-                classProb /= data.numClasses();
+                classProb /= data.numInstances();
                 entropy -= classProb * log2(classProb);
             }
         }
@@ -182,5 +200,30 @@ public class myID3 extends Classifier {
         return splittedDatas;
     }
     
+    @Override
+    public String toString() {
+        return "myID3\n\n" + toString(0);
+    }
     
+    public String toString(int level) {
+        StringBuilder text = new StringBuilder();
+        
+        if (attributeValue == null) {
+            if (Instance.isMissingValue(classValue)) {
+                text.append(": null");
+            } else {
+                text.append(": "+classAttribute.value((int)classValue));
+            }
+        } else {
+            for (int i=0; i<attributeValue.numValues(); i++) {
+                text.append("\n");
+                for (int j=0; j<level; j++) {
+                    text.append("| ");
+                }
+                text.append(attributeValue.name() + " = " + attributeValue.value(i));
+                text.append(nextNodes[i].toString(level+1));
+            }
+        }
+        return text.toString();
+    }
 }
