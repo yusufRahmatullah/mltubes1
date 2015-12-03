@@ -5,11 +5,7 @@
  */
 package wekamiddle;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -19,10 +15,8 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.trees.Id3;
 import weka.classifiers.trees.J48;
-import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
-import weka.core.converters.CSVLoader;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.unsupervised.attribute.Remove;
 
@@ -110,8 +104,7 @@ public class WekaMiddle {
         } else if (classifierText.equalsIgnoreCase("myID3")) {
             classifier = new myID3();
         } else if (classifierText.equalsIgnoreCase("myC45")) {
-            // ubah ini mi!!!!
-            classifier = new J48();
+            classifier = new myJ48();
         }
     }
     
