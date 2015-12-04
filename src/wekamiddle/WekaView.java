@@ -124,9 +124,19 @@ public class WekaView extends javax.swing.JFrame {
 
         classifierGroup.add(myId3Radio);
         myId3Radio.setText("myID3");
+        myId3Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myId3RadioActionPerformed(evt);
+            }
+        });
 
         classifierGroup.add(myC45Radio);
-        myC45Radio.setText("myC45");
+        myC45Radio.setText("myJ48");
+        myC45Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myC45RadioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -594,6 +604,14 @@ public class WekaView extends javax.swing.JFrame {
             isResultShow.setEnabled(false);
         }
     }//GEN-LAST:event_classifyUnlabeledRadioStateChanged
+
+    private void myC45RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myC45RadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_myC45RadioActionPerformed
+
+    private void myId3RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myId3RadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_myId3RadioActionPerformed
 
     /**
      * @param args the command line arguments

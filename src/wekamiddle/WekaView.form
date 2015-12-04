@@ -275,14 +275,20 @@
             </Property>
             <Property name="text" type="java.lang.String" value="myID3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myId3RadioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="myC45Radio">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="classifierGroup"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="myC45"/>
+            <Property name="text" type="java.lang.String" value="myJ48"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myC45RadioActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

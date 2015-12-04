@@ -103,7 +103,7 @@ public class WekaMiddle {
             classifier = new Id3();
         } else if (classifierText.equalsIgnoreCase("myID3")) {
             classifier = new myID3();
-        } else if (classifierText.equalsIgnoreCase("myC45")) {
+        } else if (classifierText.equalsIgnoreCase("myJ48")) {
             classifier = new myJ48();
         }
     }
