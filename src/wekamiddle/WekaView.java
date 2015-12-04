@@ -5,16 +5,12 @@
  */
 package wekamiddle;
 
-import java.awt.Component;
 import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
