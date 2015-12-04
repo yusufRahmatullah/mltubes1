@@ -40,7 +40,7 @@ public class WekaView extends javax.swing.JFrame {
         initComponents();
         
         // set window's title
-        this.setTitle("Weka Access by 13512040 and 13512068");
+        this.setTitle("Weka Access by 13512040 and 13512048");
         
         // set init value
         WekaMiddle.setClassifier("NaiveBayes");
